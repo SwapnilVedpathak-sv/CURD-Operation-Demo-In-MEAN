@@ -19,7 +19,7 @@ const authRouter = require("./routes/authRoutes");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-app.use(express.static("./dist/ndsapp"));
+app.use(express.static("./dist/CURD-Assessment"));
 app.use(cors({ origin: "*" }));
 app.use(header);
 app.use(compression());
