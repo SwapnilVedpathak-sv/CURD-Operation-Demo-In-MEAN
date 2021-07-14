@@ -1,35 +1,30 @@
 <div class="loginPage headerBtn">
-    <button mat-stroked-button color="accent" routerLink="/login" class="headingLoginBtn">Login</button>
-    <button mat-stroked-button color="warn" routerLink="/register" class="headingRegisterBtn">Register</button>
+  <button mat-stroked-button color="accent" routerLink="/login" class="headingLoginBtn">Login</button>
+  <button mat-stroked-button color="accent" routerLink="/register" class="headingRegisterBtn">Register</button>
+</div>
+
+<div class="loginPage">
+  <div class="loginPage-content">
+    <mat-card-content>
+      <h1>Login</h1>
+      <p class="welcomeHeading">Welcome!!<br><br> Please Login to Your Account</p>
+      <form [formGroup]="loginForm">
+
+        <mat-form-field class="full-width-input">
+          <input matInput placeholder="Email" formControlName="email">
+        </mat-form-field>
+
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password">
+        </mat-form-field>
+        <button class="text-center ml-3 loginBtn" mat-raised-button type="submit" (click)="loginUser()">Login</button>
+      </form>
+      <div class="text-center mt-5">
+        <span>
+          <p class="blueColor footer">Don't have an account?</p>
+          <p routerLink="/register" class="footer">Register</p>
+        </span>
+      </div>
+    </mat-card-content>
   </div>
-  
-  <div class="loginPage">
-    <div class="loginPage-content">
-      <mat-card-content>
-        <h1>Login</h1>
-        <p class="welcomeHeading">Welcome!!<br><br> Please Login to Your Account</p>
-        <form [formGroup]="loginForm">
-  
-          <mat-form-field class="full-width-input">
-            <input matInput placeholder="Email" formControlName="email" >
-            <!-- <mat-error *ngIf="isValid('email')">
-              Please inform your user name
-            </mat-error> -->
-          </mat-form-field>
-          <mat-form-field class="full-width-input">
-            <input matInput type="password" placeholder="Password" formControlName="password" >
-            <!-- <mat-error *ngIf="isValid('password')">
-              Please inform your password
-            </mat-error> -->
-          </mat-form-field>
-          <button class="text-center ml-3 loginBtn" mat-raised-button type="submit" (click)="loginUser()">Login</button>
-        </form>
-        <div class="text-center mt-5">
-          <span>
-            <p class="blueColor footer">Don't have an account?</p><p routerLink="/register" class="footer">Register</p> 
-          </span>
-        </div>
-      </mat-card-content>
-    </div>
-  </div>
-  
+</div>

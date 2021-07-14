@@ -4,9 +4,7 @@ const jwt = require("jsonwebtoken");
 const authModel = require("../models/authModel");
 const { body, validationResult } = require("express-validator");
 const bcrypt = require("bcrypt");
-
-var today = new Date();
-var date = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+const { Hash } = require("crypto");
 
 router.post(
   "/registerUser",
@@ -17,7 +15,6 @@ router.post(
     body("password").not().isEmpty(),
   ],
   async (req, res) => {
-    // console.log(req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({
@@ -35,15 +32,14 @@ router.post(
     if (emailExist)
       return res
         .status(401)
-        .json({ error: "User with the E-mail already exists" });
+        .json({ error: "E-mail already exists" });
 
-    //HASH THE PASSWORDS BEFORE STORING ON THE DATABASE
+    // Hash the password before storing in the database 
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
     const userDetails = {
       email: req.body.email,
       username: req.body.username,
       password: hashedPassword,
-      creation_dt: date,
     };
     //Saving the user details into database
     const newUser = new authModel(userDetails);
@@ -52,7 +48,7 @@ router.post(
       .then((result) => {
         return res
           .status(200)
-          .json({ msg: "User Registered Successfully!!!", details: result });
+          .json({ msg: "Registration Successful!!!", details: result });
       })
       .catch((error) => {
         return res.status(401).json({ error: "Something Went Wrong!!!" });
@@ -64,7 +60,6 @@ router.post(
   "/loginUser",
   [body("email").not().isEmpty(), body("password").not().isEmpty()],
   (req, res) => {
-    // console.log('req', req.body);
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(422).json({

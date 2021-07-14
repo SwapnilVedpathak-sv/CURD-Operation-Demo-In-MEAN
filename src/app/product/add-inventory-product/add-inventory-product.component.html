@@ -1,0 +1,32 @@
+<form [formGroup]="productsFrom">
+
+  <mat-card class="card">
+    <h2>Add Product</h2>
+
+    <div class="controlers-wrapper">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Name" formControlName="name" required>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="SKU" formControlName="sku">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Description" formControlName="description">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Price" type="number" formControlName="price">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Stock Level" formControlName="stock_level">
+      </mat-form-field>
+
+      <button mat-raised-button class="color" (click)="save()">Create</button>
+
+      <button mat-raised-button class="color" (click)="reset()">Clear</button>
+    </div>
+  </mat-card>
+</form>

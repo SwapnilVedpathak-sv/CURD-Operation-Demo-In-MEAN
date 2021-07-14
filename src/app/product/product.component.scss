@@ -1,0 +1,24 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+  }
+  .title{
+      text-align: center;
+      font-weight: bold;
+      margin-top: 7%;
+  }
+  .header {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #673ab7;
+    color: white;
+    cursor: pointer;
+  }
+  .headings{
+    margin-left: 2%;
+  }

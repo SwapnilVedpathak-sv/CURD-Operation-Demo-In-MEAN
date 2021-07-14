@@ -4,12 +4,11 @@ const compression = require("compression");
 var router = express.Router();
 const bodyParse = require("body-parser");
 const JsonData = bodyParse.json();
-// const multer = require('multer');
 const app = express();
 const path = require("path");
 const cors = require("cors");
 const header = require("./middleware/header");
-const AllCertificateData = require("./models/expence");
+const ProductsData = require("./models/products");
 require("./database/databaseConnection");
 const PORT = process.env.PORT || 8000;
 
@@ -30,54 +29,11 @@ app.get("/", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./src", "index.html"));
 });
 
-// var storage = multer.diskStorage({
-//     destination: (req, file, callback) => {
-//         callback(null, "images");
-//     },
-//     filename: (req, file, callback) => {
-//         callback(null, file.fieldname + "_" + Date.now() + "_" + file.originalname);
-//     }
-// });
 
-// const upload = multer({ storage: storage })
-
-// POST Request for Image Upload
-// let lastId = 0;
-
-// app.post('/imageUpload',JsonData ,upload.single('file') , (req,res,next)=>{
-//   const file = req.file;
-//   console.log(file.filename);
-//   if(!file){
-//       const error = new error('no file')
-//       error.httpStatusCode=400
-//       return next(error)
-//   }
-
-//   var send = new AllCertificateData({
-
-//       moneyPaidBy: req.body.moneyPaidBy,
-//       toWhomMoneyPaid: req.body.toWhomMoneyPaid,
-//       totalAmount: req.body.totalAmount,
-//       paidAmount: req.body.paidAmount,
-//       pendingAmount: req.body.pendingAmount,
-//       category: req.body.category,
-//       billDate: req.body.billDate.slice(0,15),
-//       id: lastId++,
-//       imageData: file.filename
-//   })
-//   send.save().then((responce)=>{
-//       console.log(file.filename);
-//   }).catch((err)=>{
-//       console.log(err);
-//   })
-//   res.send(file)
-
-// })
-
-// Post Request For Create Student
+// Post Request For Create Product
 
 app.post("/ndsCertificateData", (req, res) => {
-  const postRequest = new AllCertificateData(req.body);
+  const postRequest = new ProductsData(req.body);
   postRequest
     .save()
     .then(() => {
@@ -88,36 +44,35 @@ app.post("/ndsCertificateData", (req, res) => {
     });
 });
 
-// Get Request For All Student
+// Get Request For All Product
 
 app.get("/ndsCertificateData", async (req, res) => {
   try {
-    const getAllData = await AllCertificateData.find();
-    // console.log(getExpencesData);
+    const getAllData = await ProductsData.find();
     res.status(200).send(getAllData);
   } catch (e) {
     res.status(501).send(e);
   }
 });
 
-// Get Request For Only Single Student
+// Get Request For Only Single Product
 
 app.get("/ndsCertificateData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
-    const getSingleData = await AllCertificateData.findById(_id);
+    const getSingleData = await ProductsData.findById(_id);
     res.send(getSingleData);
   } catch (e) {
     res.send(e);
   }
 });
 
-// Put Request For Update Specific Student
+// Put Request For Update Specific Product
 
 app.put("/ndsCertificateData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
-    const putRequest = await AllCertificateData.findByIdAndUpdate(
+    const putRequest = await ProductsData.findByIdAndUpdate(
       _id,
       req.body,
       {
@@ -130,12 +85,12 @@ app.put("/ndsCertificateData/:id", async (req, res) => {
   }
 });
 
-// Patch Request For Update Specific Student
+// Patch Request For Update Specific Product
 
 app.patch("/ndsCertificateData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
-    const patchRequest = await AllCertificateData.findByIdAndUpdate(
+    const patchRequest = await ProductsData.findByIdAndUpdate(
       _id,
       req.body,
       {
@@ -148,12 +103,12 @@ app.patch("/ndsCertificateData/:id", async (req, res) => {
   }
 });
 
-// Delete Request For Delete Specific Student
+// Delete Request For Delete Specific Product
 
 app.delete("/ndsCertificateData/:id", async (req, res) => {
   try {
     const _id = req.params.id;
-    const deleteRequest = await AllCertificateData.findByIdAndDelete(_id);
+    const deleteRequest = await ProductsData.findByIdAndDelete(_id);
     res.send(deleteRequest);
   } catch (e) {
     res.send(e);

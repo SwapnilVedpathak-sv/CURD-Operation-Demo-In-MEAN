@@ -9,12 +9,12 @@ export class RootService {
   constructor(private http: HttpClient) { }
 
   readonly baseUrl = 'http://localhost:8000';
-  readonly AllCertificate = '/ndsCertificateData';
+  readonly AllProducts = '/ndsCertificateData';
   readonly register = '/registerUser';
   readonly login = '/loginUser';
 
-  getList() {
-    return this.http.get(`${this.baseUrl}${this.AllCertificate}`);
+  getProductList() {
+    return this.http.get(`${this.baseUrl}${this.AllProducts}`);
   }
 
   registerUser(body: any) {
@@ -29,4 +29,15 @@ export class RootService {
     });
   }
 
+  saveProduct(body: any) {
+    return this.http.post(`${this.baseUrl}${this.AllProducts}`, body);
+  }
+
+  updateProduct(id: any, data: any) {
+    return this.http.put(`${this.baseUrl}${this.AllProducts}/${id}`, data)
+  }
+
+  deleteProduct(id: any) {
+    return this.http.delete(`${this.baseUrl}${this.AllProducts}/${id}`)
+  }
 }

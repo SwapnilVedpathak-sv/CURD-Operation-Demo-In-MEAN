@@ -7,7 +7,6 @@ import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { MaterialModule } from './../material/material.module'
 
-
 @NgModule({
   declarations: [
     AuthModuleComponent,

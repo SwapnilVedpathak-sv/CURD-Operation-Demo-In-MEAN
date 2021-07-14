@@ -12,10 +12,10 @@ import Swal from 'sweetalert2'
 })
 export class LoginPageComponent implements OnInit {
 
-  loginForm:any = FormGroup;
-  collections:any= [];
+  loginForm: any = FormGroup;
+  collections: any = [];
 
-  constructor(private root: RootService, private router:Router) {
+  constructor(private root: RootService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl(null, Validators.required),
       password: new FormControl(null, Validators.required)
@@ -23,37 +23,34 @@ export class LoginPageComponent implements OnInit {
   }
 
   ngOnInit() {
-   
   }
 
-  isValid(controlName:any){
+  isValid(controlName: any) {
     return this.loginForm.get(controlName).invalid && this.loginForm.get(controlName).touched;
   }
 
-  loginUser(){
+  loginUser() {
     console.log(this.loginForm.value);
-    if(this.loginForm.valid){
+    if (this.loginForm.valid) {
       this.root.loginUser(this.loginForm.value)
-      .pipe(first())
-      .subscribe(data => {
-        console.log("Ran", data);
-        this.collections = data;
-        console.log("DID", this.collections.token)
-        localStorage.setItem("token", this.collections.token.toString())
-        Swal.fire({
-          text: 'Login Successful !',
-          timer: 1000,
-        })
-        this.router.navigate(['home']);
-      },
-        error => {
-          console.log(error);
+        .pipe(first())
+        .subscribe(data => {
+          this.collections = data;
+          localStorage.setItem("token", this.collections.token.toString())
           Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: `${error.error.error}`
+            text: 'Login Successful !!',
+            timer: 1000,
           })
-        });
+          this.router.navigate(['product']);
+        },
+          error => {
+            console.log(error);
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: `${error.error.error}`
+            })
+          });
     }
   }
 }

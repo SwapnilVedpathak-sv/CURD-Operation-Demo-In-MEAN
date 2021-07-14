@@ -1,1 +1,12 @@
-<p>product works!</p>
+<mat-toolbar class="header" style="position: fixed;">
+  <div class="example-spacer">My Angular App</div>
+  <mat-icon class="headings">home</mat-icon>
+  <h5 class="headings">Products</h5>
+  <h5 class="logout headings" (click)="clear()">Logout</h5>
+</mat-toolbar>
+<h1 class="title">Product Inventory</h1>
+
+<div class="container">
+  <app-list-of-products></app-list-of-products>
+  <app-add-inventory-product></app-add-inventory-product>
+</div>

@@ -1,1 +1,42 @@
-<p>register-page works!</p>
+<div class="registerPage headerBtn">
+  <button mat-stroked-button color="accent" routerLink="/" class="headingLoginBtn">Login</button>
+  <button mat-stroked-button color="accent" routerLink="/register" class="headingRegisterBtn">Register</button>
+</div>
+
+<div class="registerPage">
+  <div class="signin-content">
+    <mat-card-content>
+      <h1>Register</h1>
+      <p class="welcomeHeading">Welcome!!<br><br> Please Create Your Account</p>
+      <form [formGroup]="authForm">
+        <mat-form-field class="full-width-input">
+          <input type="email" matInput placeholder="Email" formControlName="email" required>
+          <mat-error *ngIf="isValid('email')">
+            Please enter a valid email
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="text" placeholder="Username" formControlName="username" required>
+          <mat-error *ngIf="isValid('username')">
+            Please enter your username
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Password" formControlName="password" required>
+          <mat-error *ngIf="isValid('password')">
+            Please enter your password
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width-input">
+          <input matInput type="password" placeholder="Re-enter Password" formControlName="cnfpass" required>
+          <mat-error *ngIf="isValid('cnfpass')">
+            Please re-enter your password
+          </mat-error>
+        </mat-form-field>
+        <button class="text-center ml-3 registerBtn" mat-stroked-button type="submit"
+          (click)="register()">Register</button>
+      </form>
+    </mat-card-content>
+  </div>
+
+</div>
