@@ -8,8 +8,8 @@ export class RootService {
 
   constructor(private http: HttpClient) { }
 
-  readonly baseUrl = 'http://localhost:8000';
-  readonly AllProducts = '/ndsCertificateData';
+  readonly baseUrl = '';
+  readonly AllProducts = '/products';
   readonly register = '/registerUser';
   readonly login = '/loginUser';
   token:any

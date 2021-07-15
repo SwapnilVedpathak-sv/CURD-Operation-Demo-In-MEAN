@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 
 // Post Request For Create Product
 
-app.post("/ndsCertificateData", checkAuth, (req, res) => {
+app.post("/products", checkAuth, (req, res) => {
   const postRequest = new ProductsData(req.body);
   const user = req.body.email
 
@@ -95,7 +95,7 @@ app.post("/ndsCertificateData", checkAuth, (req, res) => {
 
 // Get Request For All Product
 
-app.get("/ndsCertificateData", checkAuth, async (req, res) => {
+app.get("/products", checkAuth, async (req, res) => {
   try {
     const getAllData = await ProductsData.find();
     res.status(200).send(getAllData);
@@ -106,7 +106,7 @@ app.get("/ndsCertificateData", checkAuth, async (req, res) => {
 
 // Get Request For Only Single Product
 
-app.get("/ndsCertificateData/:id", checkAuth, async (req, res) => {
+app.get("/products/:id", checkAuth, async (req, res) => {
   try {
     const _id = req.params.id;
     const getSingleData = await ProductsData.findById(_id);
@@ -118,7 +118,7 @@ app.get("/ndsCertificateData/:id", checkAuth, async (req, res) => {
 
 // Put Request For Update Specific Product
 
-app.put("/ndsCertificateData/:id",checkAuth, async (req, res) => {
+app.put("/products/:id",checkAuth, async (req, res) => {
   try {
     const _id = req.params.id;
     const putRequest = await ProductsData.findByIdAndUpdate(
@@ -136,7 +136,7 @@ app.put("/ndsCertificateData/:id",checkAuth, async (req, res) => {
 
 // Patch Request For Update Specific Product
 
-app.patch("/ndsCertificateData/:id",checkAuth, async (req, res) => {
+app.patch("/products/:id",checkAuth, async (req, res) => {
   try {
     const _id = req.params.id;
     const patchRequest = await ProductsData.findByIdAndUpdate(
@@ -154,7 +154,7 @@ app.patch("/ndsCertificateData/:id",checkAuth, async (req, res) => {
 
 // Delete Request For Delete Specific Product
 
-app.delete("/ndsCertificateData/:id",checkAuth, async (req, res) => {
+app.delete("/products/:id",checkAuth, async (req, res) => {
   try {
     const _id = req.params.id;
     const deleteRequest = await ProductsData.findByIdAndDelete(_id);
