@@ -19,7 +19,8 @@ export class AddInventoryProductComponent implements OnInit {
       sku: [],
       description: [],
       price: [],
-      stock_level: []
+      stock_level: [],
+      email: []
     });
   }
 
@@ -40,6 +41,26 @@ export class AddInventoryProductComponent implements OnInit {
           text: "Your product has been generated successfully !!",
           icon: "success"
         })
+
+    //     this.forgotPWD.sendEmail("http://localhost:8028/sendemail", user).subscribe(
+    //       data => {
+    //         let res:any = data;
+    //         console.log(`${user.email} xyz ${res.messageId} and ${res.successMsg}`);
+    //         // let successMsg:any = res.successMsg;
+    //         // let 
+    // // console.log("successMsg",successMsg);
+    
+    //        this.ShowSuccessMsg = res.successMsg;;
+    //        this.ShowErrorMsg = res.error;
+    
+    //       },
+    //       err => {
+    //         console.log(err);
+    //       }
+    //     );
+
+
+
         this.productsFrom.reset();
         setTimeout(() => {
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {

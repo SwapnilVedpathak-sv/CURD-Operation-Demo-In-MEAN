@@ -24,9 +24,15 @@
         <input matInput placeholder="Stock Level" formControlName="stock_level">
       </mat-form-field>
 
-      <button mat-raised-button class="color" (click)="save()">Create</button>
+      <mat-form-field class="example-full-width">
+        <input type="email" matInput placeholder="Email" formControlName="email">
+      </mat-form-field>
 
+     <div class="buttons">
+      <button mat-raised-button class="color" (click)="save()">Create</button>
       <button mat-raised-button class="color" (click)="reset()">Clear</button>
+     </div>
+
     </div>
   </mat-card>
 </form>

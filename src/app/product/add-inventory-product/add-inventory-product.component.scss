@@ -1,9 +1,15 @@
 .card{
-    margin-left: 49%;
+    margin-left: 54%;
     margin-right: 2%;
     margin-top: 2%;
 }
 .color{
     background-color: #673ab7;
-    color: #fff
+    color: #fff;
+    margin-left: 1%;
+}
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

@@ -4,7 +4,8 @@ const createProductSchema = new mongoose.Schema({
   sku: String,
   description: String,
   price: String,
-  stock_level: String
+  stock_level: String,
+  email: String
 });
 
 // New Collection

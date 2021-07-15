@@ -12,6 +12,13 @@ export class RootService {
   readonly AllProducts = '/ndsCertificateData';
   readonly register = '/registerUser';
   readonly login = '/loginUser';
+  token:any
+
+  public getToken() {
+
+     this.token = localStorage.getItem('token');
+     return this.token
+  }
 
   getProductList() {
     return this.http.get(`${this.baseUrl}${this.AllProducts}`);
